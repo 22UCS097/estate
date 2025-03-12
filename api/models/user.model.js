@@ -17,7 +17,7 @@ const  userSchema=new mongoose.Schema({
     },
     avatar:{
         type:String,
-        default:"https://static.vecteezy.com/system/resources/previews/024/766/962/original/silver-gradient-social-media-chatting-online-blank-profile-picture-head-and-body-icon-people-standing-icon-free-vector.jpg"
+        default:"https://cdn.pixabay.com/animation/2023/06/13/15/13/15-13-16-585__480.png"
     },
 
 },{ timestamps:true});
