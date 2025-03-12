@@ -5,6 +5,7 @@ import {
   signInStart,
   signInSuccess,
   signInFailure} from '../redux/user/userSlice.js';
+import OAuth from '../components/OAuth.jsx';
 
 
 export default function SignIn() {
@@ -57,8 +58,10 @@ export default function SignIn() {
            className='border p-3 rounded-lg' id='password' onChange={handleChange} />
 
            <button disabled={loading} className='bg-slate-600 text-white p-3 rounded-lg uppercase hover:opacity-95
-             disabled:opacity-80'> {loading ? 'Loading...':'sign in'}
+             disabled:opacity-80'>
+              {loading ? 'Loading...':'sign in'}
              </button>
+              <OAuth/>
         </form>
 
          <div className='flex gap-2 mt-5'> 
