@@ -4,7 +4,7 @@ import {getDownloadURL, getStorage,ref, uploadBytesResumable} from 'firebase/sto
 import { useSelector } from 'react-redux'
 import { app } from '../firebase';
 
-import { updateUserFailure,updateUserStart,updateUserSuccess } from '../redux/user/userSlice';
+import { deleteUserStart, deleteUserSuccess, delteUserFailure, updateUserFailure,updateUserStart,updateUserSuccess } from '../redux/user/userSlice';
 import { useDispatch } from 'react-redux';
 
 
@@ -59,7 +59,7 @@ export default function Profile() {
          e.preventDefault();
          try {
             dispatch(updateUserStart());
-            const res= await fetch(`/api/user/update/${currentUser._id}`,{
+            const res= await fetch(`/api/user/update/${currentUser?._id}`,{
                 method:'POST',
                 headers:{
                   'Content-Type':'application/json',
@@ -78,6 +78,26 @@ export default function Profile() {
          } catch (error) {
             dispatch(updateUserFailure(error.message));
          }
+       }
+
+       const handleDeleteUser=async()=>{
+          try {
+             dispatch(deleteUserStart());
+             const res=await fetch(`/api/user/delete/${currentUser?._id}`,{
+                 method:'DELETE',
+             });
+
+             const data=await res.json();
+              console.log(data);
+             if(data.success===false){
+               dispatch(delteUserFailure(data.message));
+                return ;
+             }
+             dispatch(deleteUserSuccess(data));
+          } catch (error) {
+            dispatch(delteUserFailure(error.message))
+            
+          }
        }
 
   return (
@@ -127,7 +147,7 @@ export default function Profile() {
                    </button>
         </form>
          <div className='flex  justify-between mt-5'>
-          <span className='text-red-700 cursor-pointer '>Delete account</span>
+          <span onClick={handleDeleteUser} className='text-red-700 cursor-pointer '>Delete account</span>
           <span className='text-red-700 cursor-pointer '>Sign out</span>
          </div>
 
