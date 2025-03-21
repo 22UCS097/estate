@@ -25,7 +25,7 @@ export default function Header() {
       setSearchTerm(searchTermFromUrl);
      }
    },[location.search]);
-   console.log(searchTerm);
+
 
   return (
     <header className='bg-slate-200 shadow-md  '>
@@ -41,8 +41,8 @@ export default function Header() {
               type="text"
               placeholder='Search...'
               className='text-sky-500 bg-transparent focus:outline-none w-24 sm:w-64 '
+              onChange={(e)=>setSearchTerm(e.target.value)}
                value={searchTerm}
-               onChange={(e)=>setSearchTerm(e.target.value)}
                />
                <button>
                <FaSearch className='text-slate-600' />
