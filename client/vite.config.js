@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-
-import tailwindcss from '@tailwindcss/vite'
+import tailwindcss from 'tailwindcss';
+import lineClamp from '@tailwindcss/line-clamp'
 // https://vite.dev/config/
 export default defineConfig({
    server:{
@@ -12,7 +12,7 @@ export default defineConfig({
       },
     },
    },
-  plugins: [react(),
-    tailwindcss(),
+  plugins: [
+    react(), 
   ],
 })
