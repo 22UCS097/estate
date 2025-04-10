@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function About() {
   return (
-    <div>
+    <div className='w-2xl text-center mx-auto'>
        <h1 className='text-3xl font-bold mb-4 text-slate-800'> About Esate </h1>
         <p>
         An estate refers to a large area of land, property, or assets owned by an individual,

@@ -107,7 +107,6 @@ export default function UpdateListing() {
      }
 
      const handleChange=(e)=>{
-         console.log("hello",e.target.type);
           if(e.target.id==='sale' || e.target.id==='rent' ){
             setFormData({
                ...formData,
